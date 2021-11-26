@@ -16,11 +16,22 @@ const catBreedFetcher = function (catBreed) {
         //console.log('body:', body); // Print the HTML for the Google homepage.
         //console.log("BELOW IS THE TYPE OF THE BODY");
         //console.log(typeof body);
+        
+        //handling of what error is thrown? 
+        if (error) {
+            console.log("See error details: " + error);
+        } 
         const data = JSON.parse(body);
         //console.log(data);
         //console.log(typeof data);
-        //accessing the description of the first Object returned. 
-        console.log(data[0].description);
+
+        //checking if the data returned is not empty and hence no CatBreed with that name
+        if (data.length === 0){
+            console.log("Unable to find the breed in question.");
+        } else {
+            //accessing the description of the first Object returned. 
+            console.log(data[0].description);  
+        }
     });
 };
 
